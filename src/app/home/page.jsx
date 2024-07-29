@@ -24,40 +24,40 @@ const SkillsChart = () => {
   ];
 
   return (
-    <div className="skills-chart">
-      <div className="circular-skills">
+    <div className={styles.skillsChart}>
+      <div className={styles.circularSkills}>
         {skills.map((skill, index) => (
-          <div key={index} className="skill">
-                  <div className="circle-container">
-                        <CircularProgressbar
-                          value={skill.value}
-                          text={`${skill.value}%`}
-                          styles={buildStyles({
-                            textColor: ' #482106',
-                            pathColor: '#D9A760',
-                            trailColor: '#D1D3D4',
-                            textSize: '16px',
-                            pathTransitionDuration: 0.5,
-                            strokeLinecap: 'butt',
-                            trailWidth: 4,
-                          })}
-                          strokeWidth={15} 
-                          />
-                          </div>
+          <div key={index} className={styles.skill}>
+            <div className={styles.circleContainer}>
+              <CircularProgressbar
+                value={skill.value}
+                text={`${skill.value}%`}
+                styles={buildStyles({
+                  textColor: ' #482106',
+                  pathColor: '#6a4a3a',
+                  trailColor: '#D1D3D4',
+                  textSize: '16px',
+                  pathTransitionDuration: 0.5,
+                  strokeLinecap: 'butt',
+                  trailWidth: 4,
+                })}
+                strokeWidth={15}
+              />
+            </div>
             <p>{skill.name}</p>
           </div>
         ))}
       </div>
-      <div className="horizontal-skills">
+      <div className={styles.horizontalSkills}>
         {horizontalSkills.map((skill, index) => (
-          <div key={index} className="horizontal-skill">
-            <div className="skill-name">
+          <div key={index} className={styles.horizontalSkill}>
+            <div className={styles.skillName}>
               <p>{skill.name}</p>
               <p>{skill.value}%</p>
             </div>
-            <div className="skill-bar">
+            <div className={styles.skillBar}>
               <div
-                className="skill-bar-fill"
+                className={styles.skillBarFill}
                 style={{ width: `${skill.value}%` }}
               ></div>
             </div>
@@ -79,8 +79,8 @@ const Homepage = () => {
   const [email, setemail] = useState('')
   const [phone_number, setphone_number] = useState('')
   const [message, setmessage] = useState('');
+
   const fetchData = async () => {
-   
     const data = new URLSearchParams()
     data.append("first_name", first_name);
     data.append("last_name", last_name);
@@ -105,7 +105,7 @@ const Homepage = () => {
 
   const handleSubmit = () => {
     fetchData();
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -133,7 +133,7 @@ const Homepage = () => {
         {/* project section */}
         <div className={styles.container2}>
           <div className={styles.portfolioCard}>
-            <Image src="/thumbnail.jpeg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
+            <Image src="/thumb2.jpg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
             <div className={styles.overlay}>
               <Image src="/brown.webp" alt="Full Image" className={styles.fullImage} height={70} width={100} />
               <p className={styles.info}>This is detailed information about the portfolio item.</p>
@@ -141,7 +141,7 @@ const Homepage = () => {
           </div>
 
           <div className={styles.portfolioCard}>
-            <Image src="/thumbnail.jpeg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
+            <Image src="/thumb2.jpg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
             <div className={styles.overlay}>
               <Image src="/brown.webp" alt="Full Image" className={styles.fullImage} height={70} width={100} />
               <p className={styles.info}>This is detailed information about the portfolio item.</p>
@@ -149,7 +149,7 @@ const Homepage = () => {
           </div>
 
           <div className={styles.portfolioCard}>
-            <Image src="/thumbnail.jpeg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
+            <Image src="/thumb2.jpg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
             <div className={styles.overlay}>
               <Image src="/brown.webp" alt="Full Image" className={styles.fullImage} height={70} width={100} />
               <p className={styles.info}>This is detailed information about the portfolio item.</p>
@@ -157,7 +157,7 @@ const Homepage = () => {
           </div>
 
           <div className={styles.portfolioCard}>
-            <Image src="/thumbnail.jpeg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
+            <Image src="/thumb2.jpg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
             <div className={styles.overlay}>
               <Image src="/brown.webp" alt="Full Image" className={styles.fullImage} height={70} width={100} />
               <p className={styles.info}>This is detailed information about the portfolio item.</p>
@@ -165,7 +165,7 @@ const Homepage = () => {
           </div>
 
           <div className={styles.portfolioCard}>
-            <Image src="/thumbnail.jpeg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
+            <Image src="/thumb2.jpg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
             <div className={styles.overlay}>
               <Image src="/brown.webp" alt="Full Image" className={styles.fullImage} height={70} width={100} />
               <p className={styles.info}>This is detailed information about the portfolio item.</p>
@@ -173,7 +173,7 @@ const Homepage = () => {
           </div>
 
           <div className={styles.portfolioCard}>
-            <Image src="/thumbnail.jpeg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
+            <Image src="/thumb2.jpg" alt="Thumbnail Image" className={styles.thumbnail} height={100} width={100} />
             <div className={styles.overlay}>
               <Image src="/brown.webp" alt="Full Image" className={styles.fullImage} height={70} width={100} />
               <p className={styles.info}>This is detailed information about the portfolio item.</p>
@@ -182,10 +182,6 @@ const Homepage = () => {
         </div>
         {/* skills */}
         <SkillsChart />
-
-       
-
-
         {/* contact */}
         <div className={styles.container3}>
           <div className={styles.content}>
