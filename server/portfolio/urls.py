@@ -22,4 +22,5 @@ from core.views import contact
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('contact', contact),
+    path('skill',skill)
 ]

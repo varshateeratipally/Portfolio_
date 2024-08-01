@@ -7,5 +7,14 @@ class Contact(models.Model):
     email = models.CharField(max_length=30)
     phone_number = models.IntegerField(null=True)
     message = models.TextField()
+
+class Skill(models.Model):
+        layout_choices={
+        ("circle","circular"),
+        ("bar","bar"),
+        }
+        name=models.CharField(max_length=40)
+        value=models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(100)])
+        layout = models.CharField(max_length=6,choices=layout_choices)
      
 

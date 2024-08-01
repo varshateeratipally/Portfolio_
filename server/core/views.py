@@ -18,3 +18,9 @@ def contact(request):
         return JsonResponse({'stauts':'ok'})
     else:
         print('this is a get request')
+def skill(response):
+    if response.method == 'GET':
+        skill=Skill.objects.get(name=name,value=value,layout=layout)
+        return JsonResponse({"skills":"sent"})
+    else:
+        print("error occured")
