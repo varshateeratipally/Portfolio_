@@ -9,24 +9,67 @@ import 'react-circular-progressbar/dist/styles.css';
 
 
 const SkillsChart = () => {
-  const skills = [
-    { name: 'Painting', value: 57 },
-    { name: 'Edting', value: 20 },
-    { name: 'Business', value: 90 },
-    { name: 'Decorative', value: 50 },
-  ];
+  const [horizontalSkills, setHorizontalSkills] = useState([])
+  const [circularSkills, setCircularSkills] = useState([])
+  
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/skills", {
+          method:"GET",
+          headers: { 'content-type': 'application/x-www-form-urlencoded' },
+        });
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        const allSkills = data.skills
+        const fhorizontalSkills = allSkills.filter(skill => skill.layout === 'bar');
+        const fcircularSkills = allSkills.filter(skill => skill.layout === 'circle');
+        setHorizontalSkills(fhorizontalSkills);
+        setCircularSkills(fcircularSkills);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+  
+    fetchSkills();
+  }, []);
+  
+  const SixProjects =() =>{
+    const [name,setname]= useState([]);
+    const [description,setdescription]=useState([]);
 
-  const horizontalSkills = [
-    { name: 'Creativity', value: 75 },
-    { name: 'Cooking', value: 30 },
-    { name: 'hced', value: 80 },
-    { name: 'jid', value: 20 },
-  ];
-
+    useEffect(() =>{
+      const fetchProjects = async () =>{
+        try {
+          const response = await fetch("http://127.0.0.1:8000/projects", {
+            method:"GET",
+            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+          });
+          
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          const allProjects = data.projects
+          setname(name);
+          setdescription(description);
+        } catch (error) {
+          console.log("error", error);
+        }
+      };
+    
+      fetchSkills();
+    }, []);
+  }
+   
+  
   return (
     <div className={styles.skillsChart}>
       <div className={styles.circularSkills}>
-        {skills.map((skill, index) => (
+        {circularSkills.map((skill, index) => (
           <div key={index} className={styles.skill}>
             <div className={styles.circleContainer}>
               <CircularProgressbar
